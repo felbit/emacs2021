@@ -1,6 +1,5 @@
 ;;; init-ui.el -*- lexical-binding: t -*-
 
-;; ---------- Sane UI defaults ----------
 ;; get rid of all the clutter
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -11,11 +10,17 @@
 
 (setq-default fill-column 80)
 
-;; Themes
-(straight-use-package 'darkokai-theme)
-(straight-use-package 'kaolin-themes)
+;; better M-x
+(straight-use-package 'smex)
+(smex-initialize)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
-(load-theme 'kaolin-valley-light t)
+;; Themes
+(straight-use-package 'solarized-theme)
+(straight-use-package 'monokai-theme)
+;;(load-theme 'solarized-light t)
+(load-theme 'monokai t)
 
 (setq inhibit-startup-message t)
 
@@ -49,7 +54,7 @@
    "<<" "<~>" "<=|" "<~~" "<~" "<$>" "<$" "<+>" "<+" "</>" "</" "<*"
    "<*>" "<->" "<!--" ":>" ":<" ":::" "::" ":?" ":?>" ":=" "::=" "=>>"
    "==>" "=/=" "=!=" "=>" "===" "=:=" "==" "!==" "!!" "!=" ">]" ">:"
-   ">>-" ">>=" ">=>" ">>>" ">-" ">=" "&&&" "&&" "|||>" "||>" "|>" "|]"
+   ">>-" ">>=" ">=>" ">>>" ">-" ">=" "&&&" "&&" "|||>" "||>" "|]"
    "|}" "|=>" "|->" "|=" "||-" "|-" "||=" "||" ".." ".?" ".=" ".-" "..<"
    "..." "+++" "+>" "++" "[||]" "[<" "[|" "{|" "??" "?." "?=" "?:" "##"
    "###" "####" "#[" "#{" "#=" "#!" "#:" "#_(" "#_" "#?" "#(" ";;" "_|_"
@@ -69,5 +74,12 @@
         ("REVIEW"     font-lock-keyword-face bold)
         ("NOTE"       success bold)
         ("DEPRECATED" font-lock-doc-face bold)))
+
+;; I never ever want trailing whitespace
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; better undo
+(straight-use-package 'undo-tree)
+(global-undo-tree-mode 1)
 
 (provide 'init-ui)

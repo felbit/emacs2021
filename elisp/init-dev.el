@@ -8,7 +8,8 @@
 (straight-use-package 'flycheck)
 
 ;; Pair all the things
-(electric-pair-mode +1)
+;; (straight-use-package 'elec-pair) ; disabled because it messes with parinfer
+;; (electric-pair-mode +1)
 
 ;; magic
 (straight-use-package 'magit)
@@ -22,5 +23,8 @@
 ;; Single-buffer text search (replacing lsearch)
 (straight-use-package 'ctrlf)
 (ctrlf-mode +1)
+
+;; Always show parans
+(show-paren-mode)
 
 (provide 'init-dev)

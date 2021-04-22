@@ -7,7 +7,7 @@
 (straight-use-package 'parinfer-rust-mode)
 (setq parinfer-rust-auto-download t)              ; Auto-update parinfer-rust
 
-(add-hook 'emacs-lisp-mode 'parinfer-rust-mode)
-(add-hook 'clojure-mode 'parinfer-rust-mode)
+(add-hook 'emacs-lisp-mode-hook 'parinfer-rust-mode)
+(add-hook 'clojure-mode-hook 'parinfer-rust-mode)
 
 (provide 'lang-lisp)
